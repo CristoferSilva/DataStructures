@@ -84,13 +84,13 @@ std::string DoublyLinkedList::toString(){
     return listStringRepresentation;
 }
 
-void DoublyLinkedList::addNewNode(DoublyNode newNode){
+void DoublyLinkedList::addNewNode(DoublyNode* newNode){
     if (head == nullptr) {
-        head = &newNode;
-        tail = &newNode;
+        head = newNode;
+        tail = newNode;
         return;
     }
-    tail -> setNextDoublyNode(&newNode);
-    newNode.setPreviousDoublyNode(tail);
-    tail = &newNode;
+    tail -> setNextDoublyNode(newNode);
+    newNode -> setPreviousDoublyNode(tail);
+    tail = newNode;
 }

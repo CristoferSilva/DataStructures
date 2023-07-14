@@ -40,7 +40,7 @@ struct DoublyLinkedList {
         std::string toString();
         DoublyNode* getHeader();
         std::list<int> toArray();
-        void addNewNode(DoublyNode newHeader);
+        void addNewNode(DoublyNode *newHeader);
 };
 
 
