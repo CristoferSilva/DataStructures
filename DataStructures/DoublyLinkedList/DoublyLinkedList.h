@@ -5,43 +5,43 @@
 //  Created by Cristofer Silva on 13/07/23.
 //
 
+#ifndef DOUBLY_LINKED_LIST_H_
+#define DOUBLY_LINKED_LIST_H_
+
 #include <list>
 #include <string>
-#ifndef DoublyLinkedList__h
-#define DoublyLinkedList__h
 
-struct DoublyNode {
-    
-    private:
-        int value = 0;
-        DoublyNode* next = nullptr;
-        DoublyNode* previous = nullptr;
-       
+class DoublyNode {
     public:
-        int getValue();
         DoublyNode(int value);
+        ~DoublyNode() = default;
+        int getValue();
         void setValue(int newValue);
         DoublyNode* getNextDoublyNode();
         DoublyNode* getPreviousDoublyNode();
         void setNextDoublyNode(DoublyNode* newNextDoublyNode);
         void setPreviousDoublyNode(DoublyNode* newPreviousNode);
+
+    private:
+        int value_ = 0;
+        DoublyNode* next_ = nullptr;
+        DoublyNode* previous_ = nullptr;
 };
 
-struct DoublyLinkedList {
-    
-    private:
-        DoublyNode* head = nullptr;
-        DoublyNode* tail = nullptr;
-        void setHeader(DoublyNode newHeader);
-    
+class DoublyLinkedList {
     public:
+        DoublyLinkedList() = default;
+        ~DoublyLinkedList() = default;
         bool isEmpty();
         int getLength();
         std::string toString();
         DoublyNode* getHeader();
         std::list<int> toArray();
         void addNewNode(DoublyNode *newHeader);
+    
+    private:
+        DoublyNode* head_ = nullptr;
+        DoublyNode* tail_ = nullptr;
+        void setHeader(DoublyNode newHeader);
 };
-
-
-#endif /* DoublyLinkedList__h */
+#endif /* DOUBLY_LINKED_LIST_H_ */
