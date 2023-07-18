@@ -39,7 +39,7 @@ class DoublyLinkedList {
         std::list<int> toArray();
         void addNewNode(DoublyNode *newHeader);
         DoublyNode* getSmallestNode();
-        DoublyNode* getHighestNode();
+        DoublyNode* getLargestNode();
     
     private:
         DoublyNode* head_ = nullptr;

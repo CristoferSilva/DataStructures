@@ -25,7 +25,14 @@ int main(int argc, const char * argv[]) {
     doublyLinkedListLength = doublyLinkedList.getLength();
     
     std::cout << doublyLinkedList.toString() << std::endl;
-    std::cout << "Highest Node in DoublyLinkedList: " << doublyLinkedList.getHighestNode()->getValue() << std::endl;
+    
+    std::cout << "Largest Node in DoublyLinkedList: "
+              << doublyLinkedList.getLargestNode()->getValue()
+              << std::endl;
+    
+    std::cout << "Smallest Node in DoublyLinkedList: "
+              << doublyLinkedList.getSmallestNode()->getValue()
+              << std::endl;
   
     return 0;
 }

@@ -125,11 +125,11 @@ DoublyNode* DoublyLinkedList::getSmallestNode(){
     
 }
 
-DoublyNode* DoublyLinkedList::getHighestNode(){
+DoublyNode* DoublyLinkedList::getLargestNode(){
     int currentNodeValue;
     DoublyNode* currentNode = head_;
     int linkedLislength = getLength();
-    DoublyNode* lastHighestNode = head_;
+    DoublyNode* lastLargestNode = head_;
     int maxValue =  currentNode -> getValue();
     
     for (int counter = 1; counter < linkedLislength; counter++) {
@@ -138,9 +138,9 @@ DoublyNode* DoublyLinkedList::getHighestNode(){
         
         if(currentNodeValue > maxValue){
             maxValue = currentNodeValue;
-            lastHighestNode = currentNode;
+            lastLargestNode = currentNode;
         }
     }
-    return lastHighestNode;
+    return lastLargestNode;
     
 }
