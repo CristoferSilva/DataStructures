@@ -38,6 +38,8 @@ class DoublyLinkedList {
         DoublyNode* getHeader();
         std::list<int> toArray();
         void addNewNode(DoublyNode *newHeader);
+        DoublyNode* getSmallestNode();
+        DoublyNode* getHighestNode();
     
     private:
         DoublyNode* head_ = nullptr;

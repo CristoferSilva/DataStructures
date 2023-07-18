@@ -104,3 +104,43 @@ void DoublyLinkedList::addNewNode(DoublyNode* newNode){
     newNode -> setPreviousDoublyNode(tail_);
     tail_ = newNode;
 }
+
+DoublyNode* DoublyLinkedList::getSmallestNode(){
+    int currentNodeValue;
+    DoublyNode* currentNode = head_;
+    int linkedLislength = getLength();
+    DoublyNode* lastSmallestNode = head_;
+    int minValue =  currentNode -> getValue();
+    
+    for (int counter = 1; counter < linkedLislength; counter++) {
+        currentNode = currentNode->getNextDoublyNode();
+        currentNodeValue = currentNode->getValue();
+        
+        if(currentNodeValue < minValue){
+            minValue = currentNodeValue;
+            lastSmallestNode = currentNode;
+        }
+    }
+    return lastSmallestNode;
+    
+}
+
+DoublyNode* DoublyLinkedList::getHighestNode(){
+    int currentNodeValue;
+    DoublyNode* currentNode = head_;
+    int linkedLislength = getLength();
+    DoublyNode* lastHighestNode = head_;
+    int maxValue =  currentNode -> getValue();
+    
+    for (int counter = 1; counter < linkedLislength; counter++) {
+        currentNode = currentNode->getNextDoublyNode();
+        currentNodeValue = currentNode->getValue();
+        
+        if(currentNodeValue > maxValue){
+            maxValue = currentNodeValue;
+            lastHighestNode = currentNode;
+        }
+    }
+    return lastHighestNode;
+    
+}
