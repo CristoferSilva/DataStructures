@@ -40,6 +40,7 @@ class DoublyLinkedList {
         void addNewNode(DoublyNode *newHeader);
         DoublyNode* getSmallestNode();
         DoublyNode* getLargestNode();
+        DoublyNode* getNodeByValue(int value);
     
     private:
         DoublyNode* head_ = nullptr;

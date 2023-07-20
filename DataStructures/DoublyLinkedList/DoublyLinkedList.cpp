@@ -142,5 +142,14 @@ DoublyNode* DoublyLinkedList::getLargestNode(){
         }
     }
     return lastLargestNode;
+}
+
+DoublyNode* DoublyLinkedList::getNodeByValue(int value){
+    DoublyNode* currentNode = head_;
     
+    while (currentNode && currentNode->getValue() != value) {
+        currentNode = currentNode->getNextDoublyNode();
+    }
+    
+    return currentNode;
 }
