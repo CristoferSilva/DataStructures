@@ -145,7 +145,7 @@ DoublyNode* DoublyLinkedList::getLargestNode(){
 }
 
 DoublyNode* DoublyLinkedList::getNodeByValue(int value){
-    DoublyNode* currentNode = head_;
+    DoublyNode* currentNode = nullptr;
     
     while (currentNode && currentNode->getValue() != value) {
         currentNode = currentNode->getNextDoublyNode();
