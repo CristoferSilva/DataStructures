@@ -153,3 +153,31 @@ DoublyNode* DoublyLinkedList::getNodeByValue(int value){
     
     return currentNode;
 }
+
+DoublyLinkedList* DoublyLinkedList::getOrderedList(OrderType orderType){
+    std::list<int> linkedListValues;
+    DoublyLinkedList linkedListOrdered = DoublyLinkedList();
+    DoublyNode* currentNode = head_;
+    
+    while (currentNode) {
+        linkedListValues.push_back(currentNode->getValue());
+        currentNode = currentNode->getNextDoublyNode();
+    }
+    
+    linkedListValues.sort();
+    
+    if (orderType == OrderType::ASC) {
+        for (int value : linkedListValues) {
+            DoublyNode currentNode = DoublyNode{value};
+            linkedListOrdered.addNewNode(&currentNode);
+        }
+    } else {
+        linkedListValues.reverse();
+        for (int value : linkedListValues) {
+            DoublyNode* currentNode = new DoublyNode(value);
+            linkedListOrdered.addNewNode(currentNode);
+        }
+    }
+    
+    return &linkedListOrdered;
+}

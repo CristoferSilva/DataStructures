@@ -11,6 +11,11 @@
 #include <list>
 #include <string>
 
+enum class OrderType{
+    ASC,
+    DESC
+};
+
 class DoublyNode {
     public:
         DoublyNode(int value);
@@ -41,6 +46,7 @@ class DoublyLinkedList {
         DoublyNode* getSmallestNode();
         DoublyNode* getLargestNode();
         DoublyNode* getNodeByValue(int value);
+        DoublyLinkedList* getOrderedList(OrderType orderType);
     
     private:
         DoublyNode* head_ = nullptr;
