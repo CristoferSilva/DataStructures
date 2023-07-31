@@ -43,7 +43,9 @@ class DoublyLinkedList {
         DoublyNode* getHeader();
         std::list<int> toArray();
         void addNewNode(DoublyNode *newHeader);
-        DoublyNode* getSmallestNode();
+    void extracted(DoublyNode *&currentNode);
+    
+    DoublyNode* getSmallestNode();
         DoublyNode* getLargestNode();
         DoublyNode* getNodeByValue(int value);
         DoublyLinkedList* getOrderedList(OrderType orderType);

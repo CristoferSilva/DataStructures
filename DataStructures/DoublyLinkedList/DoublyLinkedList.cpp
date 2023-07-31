@@ -8,6 +8,15 @@
 #include <stdio.h>
 #include "DoublyLinkedList.h"
 
+namespace {
+    void freeMemory(DoublyNode *&currentNode) {
+        if (currentNode) {
+            currentNode = nullptr;
+            delete currentNode;
+        }
+    }
+}
+
 DoublyNode::DoublyNode(int nodeValue){
     value_ = nodeValue;
 }
@@ -52,7 +61,7 @@ int DoublyLinkedList::getLength(){
         doublyLinkedListLength++;
         currentNode = currentNode->getNextDoublyNode();
     }
-    
+    freeMemory(currentNode);
     return doublyLinkedListLength;
 }
 
@@ -71,6 +80,8 @@ std::list<int> DoublyLinkedList::toArray(){
         nodeValues.push_back(currentNode->getValue());
         currentNode = currentNode->getNextDoublyNode();
     }
+    
+    freeMemory(currentNode);
     return nodeValues;
 }
 
@@ -90,7 +101,7 @@ std::string DoublyLinkedList::toString(){
        
         currentNode = currentNode -> getNextDoublyNode();
     }
-    
+    freeMemory(currentNode);
     return listStringRepresentation;
 }
 
@@ -121,8 +132,8 @@ DoublyNode* DoublyLinkedList::getSmallestNode(){
             lastSmallestNode = currentNode;
         }
     }
+    freeMemory(currentNode);
     return lastSmallestNode;
-    
 }
 
 DoublyNode* DoublyLinkedList::getLargestNode(){
@@ -141,6 +152,7 @@ DoublyNode* DoublyLinkedList::getLargestNode(){
             lastLargestNode = currentNode;
         }
     }
+    freeMemory(currentNode);
     return lastLargestNode;
 }
 
@@ -178,6 +190,6 @@ DoublyLinkedList* DoublyLinkedList::getOrderedList(OrderType orderType){
             linkedListOrdered.addNewNode(currentNode);
         }
     }
-    
+    //TODO: Check if is needed free memory for current node
     return &linkedListOrdered;
 }
