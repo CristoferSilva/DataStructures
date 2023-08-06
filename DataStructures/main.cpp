@@ -36,11 +36,9 @@ int main(int argc, const char * argv[]) {
               << doublyLinkedList.getSmallestNode()->getValue()
               << std::endl;
     
-    std::cout << "Smallest Node in DoublyLinkedList: "
-              << doublyLinkedList.getSmallestNode()->getValue()
-              << std::endl;
     
-    auto listOrdered = doublyLinkedList.getOrderedList(OrderType::DESC);
+    DoublyLinkedList* listOrdered = doublyLinkedList.getOrderedList(OrderType::DESC);
+    auto listToArray =  doublyLinkedList.toArray();
   
     return 0;
 }
