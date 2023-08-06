@@ -64,8 +64,8 @@ std::list<int> DoublyLinkedList::toArray(){
     int lenght = getLength();
     std::list<int> nodeValues;
     DoublyNode* currentNode = head_;
-
-  
+    
+    
     for (int i = 0; i < lenght; i++) {
         nodeValues.push_back(currentNode->getValue());
         currentNode = currentNode->getNextDoublyNode();
@@ -87,7 +87,7 @@ std::string DoublyLinkedList::toString(){
         }else{
             listStringRepresentation.append(", ");
         }
-       
+        
         currentNode = currentNode -> getNextDoublyNode();
     }
     return listStringRepresentation;
