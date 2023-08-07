@@ -52,7 +52,6 @@ int DoublyLinkedList::getLength(){
         doublyLinkedListLength++;
         currentNode = currentNode->getNextDoublyNode();
     }
-    
     return doublyLinkedListLength;
 }
 
@@ -65,12 +64,13 @@ std::list<int> DoublyLinkedList::toArray(){
     int lenght = getLength();
     std::list<int> nodeValues;
     DoublyNode* currentNode = head_;
-
-  
+    
+    
     for (int i = 0; i < lenght; i++) {
         nodeValues.push_back(currentNode->getValue());
         currentNode = currentNode->getNextDoublyNode();
     }
+    
     return nodeValues;
 }
 
@@ -87,10 +87,9 @@ std::string DoublyLinkedList::toString(){
         }else{
             listStringRepresentation.append(", ");
         }
-       
+        
         currentNode = currentNode -> getNextDoublyNode();
     }
-    
     return listStringRepresentation;
 }
 
@@ -121,8 +120,8 @@ DoublyNode* DoublyLinkedList::getSmallestNode(){
             lastSmallestNode = currentNode;
         }
     }
+    currentNode = nullptr;
     return lastSmallestNode;
-    
 }
 
 DoublyNode* DoublyLinkedList::getLargestNode(){
@@ -141,6 +140,7 @@ DoublyNode* DoublyLinkedList::getLargestNode(){
             lastLargestNode = currentNode;
         }
     }
+    currentNode = nullptr;
     return lastLargestNode;
 }
 
@@ -152,4 +152,31 @@ DoublyNode* DoublyLinkedList::getNodeByValue(int value){
     }
     
     return currentNode;
+}
+
+DoublyLinkedList* DoublyLinkedList::getOrderedList(OrderType orderType){
+    std::list<int> linkedListValues;
+    DoublyLinkedList linkedListOrdered = DoublyLinkedList();
+    DoublyNode* currentNode = head_;
+    
+    while (currentNode) {
+        linkedListValues.push_back(currentNode->getValue());
+        currentNode = currentNode->getNextDoublyNode();
+    }
+    
+    linkedListValues.sort();
+    
+    if (orderType == OrderType::ASC) {
+        for (int value : linkedListValues) {
+            DoublyNode currentNode = DoublyNode{value};
+            linkedListOrdered.addNewNode(&currentNode);
+        }
+    } else {
+        linkedListValues.reverse();
+        for (int value : linkedListValues) {
+            DoublyNode* currentNode = new DoublyNode(value);
+            linkedListOrdered.addNewNode(currentNode);
+        }
+    }
+    return &linkedListOrdered;
 }
