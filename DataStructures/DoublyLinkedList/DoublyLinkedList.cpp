@@ -156,7 +156,8 @@ DoublyNode* DoublyLinkedList::getNodeByValue(int value){
 
 DoublyLinkedList* DoublyLinkedList::getOrderedList(OrderType orderType){
     std::list<int> linkedListValues;
-    DoublyLinkedList linkedListOrdered = DoublyLinkedList();
+    DoublyLinkedList *linkedListOrdered;
+    *linkedListOrdered = DoublyLinkedList();
     DoublyNode* currentNode = head_;
     
     while (currentNode) {
@@ -169,14 +170,14 @@ DoublyLinkedList* DoublyLinkedList::getOrderedList(OrderType orderType){
     if (orderType == OrderType::ASC) {
         for (int value : linkedListValues) {
             DoublyNode currentNode = DoublyNode{value};
-            linkedListOrdered.addNewNode(&currentNode);
+            linkedListOrdered->addNewNode(&currentNode);
         }
     } else {
         linkedListValues.reverse();
         for (int value : linkedListValues) {
             DoublyNode* currentNode = new DoublyNode(value);
-            linkedListOrdered.addNewNode(currentNode);
+            linkedListOrdered->addNewNode(currentNode);
         }
     }
-    return &linkedListOrdered;
+    return linkedListOrdered;
 }
