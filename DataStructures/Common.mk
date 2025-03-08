@@ -31,7 +31,7 @@ $(TARGET): $(OBJ_FILES)
 all: $(TARGET)
 
 clean:
-	@rm -rf $(OBJ_DIR) $(BIN_DIR) --no-print-directory
+	@rm -rf $(OBJ_DIR) $(BIN_DIR)
 	@echo clean done for $(MODULE)
 
 .PHONY: all clean
