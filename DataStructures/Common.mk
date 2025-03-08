@@ -1,31 +1,37 @@
-# Compilador e flags
-CXX = g++
+OS := $(shell uname -s)
+
+# Choose compiler according OS
+ifeq ($(OS),Darwin)
+    CXX := clang++
+else
+    CXX := g++
+endif
+
 CXXFLAGS = -w -std=c++17
 
-# Diretórios
+# Directories
 OBJ_DIR = obj
 BIN_DIR = bin
 
-# Nome do módulo (recebido do Makefile do módulo)
+# Module name
 TARGET = $(BIN_DIR)/$(MODULE).exe
 
-# Arquivos fonte e objetos
 SRC_FILES = $(wildcard *.cpp)
 OBJ_FILES = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
-# Regra para criar diretórios e compilar objetos
+# Rule to create directory and compile objects
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(OBJ_DIR) $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Regra para criar o executável
+# Target to create executable
 $(TARGET): $(OBJ_FILES)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+	@$(CXX) $(CXXFLAGS) $^ -o $@
 
-# Regra principal
 all: $(TARGET)
 
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	@rm -rf $(OBJ_DIR) $(BIN_DIR) --no-print-directory
+	@echo clean done for $(MODULE)
 
 .PHONY: all clean

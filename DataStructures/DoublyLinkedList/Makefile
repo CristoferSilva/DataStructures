@@ -1,5 +1,5 @@
-# Define o nome do módulo
+# Define module name based on folder name
 MODULE = $(notdir $(CURDIR))
 
-# Inclui as regras compartilhadas
+# Add shared rules
 include ../common.mk
