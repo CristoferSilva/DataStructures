@@ -6,7 +6,7 @@
 //
 
 #include <iostream>
-#include "DoublyLinkedList/DoublyLinkedList.h"
+#include "DoublyLinkedList.h"
 
 void buildDoublyLinkedList(DoublyLinkedList &doublyLinkedList, int nodesQuantity) {
     DoublyNode* nodesPtr = (DoublyNode*) calloc(nodesQuantity, sizeof(DoublyNode));
