@@ -14,7 +14,11 @@ OBJ_DIR = obj
 BIN_DIR = bin
 
 # Module name
-TARGET = $(BIN_DIR)/$(MODULE).exe
+ifeq ($(OS),Darwin)
+    TARGET = $(BIN_DIR)/$(MODULE)
+else
+    TARGET = $(BIN_DIR)/$(MODULE).exe
+endif
 
 SRC_FILES = $(wildcard *.cpp)
 OBJ_FILES = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
